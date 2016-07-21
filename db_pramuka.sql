@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.1.14
+-- version 4.0.10deb1
 -- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Generation Time: Jul 21, 2016 at 08:25 AM
--- Server version: 5.6.17
--- PHP Version: 5.5.12
+-- Host: localhost
+-- Generation Time: Jun 03, 2016 at 02:40 AM
+-- Server version: 5.5.49-0ubuntu0.14.04.1
+-- PHP Version: 5.5.9-1ubuntu4.17
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -61,8 +61,6 @@ CREATE TABLE IF NOT EXISTS `anggota` (
   `subkeahlian` varchar(2) NOT NULL,
   `foto` varchar(255) NOT NULL DEFAULT '',
   `golongan` varchar(45) NOT NULL DEFAULT '',
-  `tempat_lahir` varchar(100) NOT NULL,
-  `tanggal_lahir` date NOT NULL,
   PRIMARY KEY (`idanggota`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -70,13 +68,11 @@ CREATE TABLE IF NOT EXISTS `anggota` (
 -- Dumping data for table `anggota`
 --
 
-INSERT INTO `anggota` (`idanggota`, `nama_anggota`, `jenis_kelamin`, `agama`, `golongan_darah`, `alamat`, `idkwaran`, `idgudep`, `kode_gudep`, `keahlian`, `subkeahlian`, `foto`, `golongan`, `tempat_lahir`, `tanggal_lahir`) VALUES
-('1238128312', 'Wandi Shahid', 'L', 'PROTESTAN', 'A', 'Sumedang', '1', '2', '1039', 'Krida Pertanian dan Tanaman Pangan', '1', 'f8a6cd4d3e58c3241c09d5897db19422.jpg', 'SIAGA', 'Sumedang', '1990-01-18'),
-('312312312', 'Dadang', 'P', 'KHATOLIK', 'B', 'Cikarang Utara', '1', '2', '1040', '2', '1', '5a3cd4b367517cc5f6716341bd1953c3.jpg', 'PENGGALANG', '', '0000-00-00'),
-('3123123121', 'jajang', 'L', 'KHATOLIK', 'A', 'jawa', '1', '2', '1039', '1', '1', '2a5f24b942bea2e0751871a5ba04edc4.jpg', 'PENGGALANG', '', '0000-00-00'),
-('31237137128312', 'ridwan Maulain ', 'L', 'KHATOLIK', 'A', 'Sumedang utara', '1', '2', '1039', '1', '1', '14ea2aecde96ab2644f7c75f4d516754.jpg', 'PEMBINA', '', '0000-00-00'),
-('3129389128', 'Anggot', 'P', 'KHATOLIK', 'A', 'Alamat', '1', '', '1040', '', '', 'aed22290411f12fb8ec46d9e79cd52ed.jpg', 'PENGGALANG', 'Sumedang Selatan', '1980-02-16'),
-('390123128', 'Menuju Senja', 'L', 'KHATOLIK', 'A', 'Mana Aja gak boleh tau ', '1', '2', '1039', 'Krida Pertanian Tanaman Perkebunan', '', '47e64a8dabff53305b3e4074c8937efa.jpg', 'PENGGALANG', 'Bandung', '0000-00-00');
+INSERT INTO `anggota` (`idanggota`, `nama_anggota`, `jenis_kelamin`, `agama`, `golongan_darah`, `alamat`, `idkwaran`, `idgudep`, `kode_gudep`, `keahlian`, `subkeahlian`, `foto`, `golongan`) VALUES
+('1238128312', 'Wandi Shahid', 'L', 'PROTESTAN', 'A', 'Sumedang', '1', '1', '1039', '2', '1', 'f8a6cd4d3e58c3241c09d5897db19422.jpg', 'SIAGA'),
+('312312312', 'Dadang', 'P', 'KHATOLIK', 'B', 'Cikarang Utara', '1', '2', '1040', '2', '1', '5a3cd4b367517cc5f6716341bd1953c3.jpg', 'PENGGALANG'),
+('3123123121', 'jajang', 'L', 'KHATOLIK', 'A', 'jawa', '1', '2', '1039', '1', '1', '2a5f24b942bea2e0751871a5ba04edc4.jpg', 'PENGGALANG'),
+('31237137128312', 'ridwan Maulain ', 'L', 'KHATOLIK', 'A', 'Sumedang utara', '1', '2', '1039', '1', '1', '14ea2aecde96ab2644f7c75f4d516754.jpg', 'PEMBINA');
 
 -- --------------------------------------------------------
 
@@ -152,7 +148,7 @@ INSERT INTO `kwaran` (`idkwaran`, `idkwarcab`, `keterangan`, `nama_kwaran`, `use
 (1, 1, 'cabang admin wado', 'Wado', 'admin', '11'),
 (2, 1, 'Admin cabang', 'Jatinunggal', 'admin', '22'),
 (3, 1, 'Admin cabang', 'Darmaraja', 'admin', '33'),
-(4, 1, 'admin cabang', 'Cibugel', 'eka_sumpena', 'masukah'),
+(4, 1, 'admin cabang', 'Cibugel', 'eka_sumpena', '44'),
 (5, 1, 'admin cabang', 'Cisitu', 'admin', '55'),
 (6, 1, 'admin cabang', 'Situraja', 'admin', '66'),
 (7, 1, 'admin cabang', 'Conggeang', 'admin', '77'),

@@ -19,10 +19,24 @@
 						<li>
 							<a class="link" data-id="<?php echo base_url("anggota/table_anggota") ?>" href="#">Anggota</a>
 						</li>
+
 						<li>
-							<a class="link" data-id="<?php echo base_url("rekap/form_rekap") ?>" href="#">
-								Laporan
-							</a>
+							
+							<li class="dropdown">
+							 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Laporan<strong class="caret"></strong></a>
+							<ul class="dropdown-menu">
+			<li>
+				<a class="link" data-id="<?php echo base_url("rekap/form_rekap");?>" href="#">
+						Per-Golongan
+					</a>
+					</li><li>
+				<a class="link" data-id="<?php echo base_url("rekap/form_rekap_keahlian");?>" href="#">
+						Per-Keahlian
+				</a>
+			</li>
+
+							</ul>
+						</li>
 						</li>
 
 						<li class="adminOnly">

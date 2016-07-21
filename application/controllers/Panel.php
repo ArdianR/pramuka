@@ -43,6 +43,7 @@
 		{
 
 			$s=$this->session();
+			
 			$idkwaran=$s['idkwaran'];
 			$data = array(
 				'anggota' => count($this->dataanggota->all($idkwaran)->result()), 

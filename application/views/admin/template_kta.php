@@ -2,12 +2,12 @@
 <div class="container" id="kartu">
 <div class="col-md-3"></div>
 <div class="col-md-6">
-	<?php foreach($anggota->result() as $row):?>
-		<table style="background-color:#DE1E0B; padding:10px; color:#fff; border-radius:5px;">
+  <?php foreach($anggota->result() as $row):?>
+    <table style="background-color:#DE1E0B; padding:10px; color:#fff; border-radius:5px;">
   <tr>
-  	<th>
-  			<img width="100px;" src="<?php echo base_url("src/img/logo.png"); ?>">
-  	</th>
+    <th>
+        <img width="100px;" src="<?php echo base_url("src/img/logo.png"); ?>">
+    </th>
     <th colspan="2">
     <h1 align="center">KARTU TANDA ANGGOTA</h1>
     <h1 align="center">GERAKAN PRAMUKA</h1>
@@ -15,9 +15,9 @@
   </tr>
   <hr>
   <tr>
-  	<td colspan="3">
-  		<hr>  	
-  	</td>
+    <td colspan="3">
+      <hr>    
+    </td>
   </tr>
   <tr>
     <th rowspan="11" style="padding:10px;">
@@ -72,7 +72,7 @@
     <td></td>
   </tr>
 </table>
-	<?php endforeach;?>
+  <?php endforeach;?>
 </div>
 <div class="col-md-3"></div>
 </div>

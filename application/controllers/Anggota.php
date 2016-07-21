@@ -95,28 +95,28 @@
 			);
 
 
-			$config['upload_path'] = './uploads/';
-			$config['allowed_types'] = 'gif|jpg|png';
-			$config['max_size']	= '5000';
-			$config['encrypt_name']	= TRUE;
+			 $config['upload_path'] = './uploads/';
+			 $config['allowed_types'] = 'gif|jpg|png';
+			 $config['max_size']	= '5000';
+			 $config['encrypt_name']	= TRUE;
 
-			$this->load->library('upload', $config);
+			 $this->load->library('upload', $config);
 
-			if ( ! $this->upload->do_upload())
-			{
-				$data=$text;
-				$this->dataanggota->update($data);
-				echo 1;
-			}
-			else
-			{
-				$data = array('upload_data' => $this->upload->data());
-				$image=$data['upload_data']['file_name'];
-				$foto=array('foto'=>$image);
-				$data=array_merge($text,$foto);
-				$this->dataanggota->update($data);
-				echo 1;
-			}
+			 if ( ! $this->upload->do_upload())
+			 {
+			 	$data=$text;
+			 	$this->dataanggota->update($data);
+			 	echo 1;
+			 }
+			 else
+			 {
+			 	$data = array('upload_data' => $this->upload->data());
+			 	$image=$data['upload_data']['file_name'];
+			 	$foto=array('foto'=>$image);
+			 	$data=array_merge($text,$foto);
+			 	$this->dataanggota->update($data);
+			 	echo 1;
+			 }
 		
 		}
 		public function table_anggota()

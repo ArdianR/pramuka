@@ -1,66 +1,54 @@
-<div class="container">
+<div class="container-fluid">
 <div class="row">
-<div class="col-md-4">
-</div>
-	<div class="col-md-4">
-		<div class="panel panel-default">
-			<div class="panel-heading">
-				Buat Laporan
-			</div>
-			<form target="__blank" method="post" action="<?php echo base_url("rekap/create_rekap"); ?>" id='form_rekap'>
-				<div class="panel-body">
-				<div class="pesan"></div>
-				<label>Nama Kwaran</label>
+<div class="col-md-12">
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h3>Buat Laporan Golongan</h3>
+	</div>
+	<div class="panel-body">
+		<form method="post" id="form_golongan" action="#">
+			<div class="form-inline">
+				<label>Golongan</label>:
+				<select required class="form-control" name="golongan">
+						<option value="">-Pilih Golongan-</option>
+					<?php foreach($golongan->result() as $row):?>
+						<option value="<?=$row->golongan;?>"><?=$row->golongan;?></option>
+					<?php endforeach;?>
+				</select>
+				<label>Kwaran</label>:
 				<select required class="form-control" name="kwaran" id="kwaran">
 					<option value="">-Pilih Kwaran-</option>
 				<?php foreach($kwaran->result() as $row):?>
 					<option value="<?=$row->idkwaran;?>"><?=$row->nama_kwaran;?></option>
 				<?php endforeach;?>
 				</select>
-				<label>Nama Gudep</label>
-				<select required class="form-control" name="gudep"  id="gudep">
-				<option value="">-Data Kosong-</option>
-				</select>
-				<label>Golongan</label>
-				<select required class="form-control" name="golongan">
-					<?php foreach($golongan->result() as $row):?>
-						<option value="<?=$row->golongan;?>"><?=$row->golongan;?></option>
-					<?php endforeach;?>
-				</select>
-				</select>
-				<label>Keahlian (Satuan Karya)</label>
-				<select name="satuan_karya" id="satuan_karya" class="form-control">
-					<?php  foreach($keahlian->result() as $row):?>
-						<option value="<?=$row->idkeahlian;?>"><?=$row->nama_keahlian;?></option>
-					<?php  endforeach;?>
-				</select>
-				<label>Sub Keahlian (Satuan Karya)</label>
-				<select name="keahlian" id="keahlian" class="form-control">
-					
-				</select>
-				</div>
-				<div class="panel-footer">
-				<button type="submit" class="btn btn-primary btn-block"> Buat Laporan </button>
-				</div>
-			</form>
+				<a href="#" class="search btn btn-primary">
+					<i class="fa fa-search"></i> Cari 
+				</a>
+		</div>
+		</form>
+	</div>
+	<div class="panel-body">
+		<div id="report">
 			
 		</div>
 	</div>
-	<div class="col-md-4"></div>
+	<div class="panel-footer text-right" id="tprint">
+	<a href="<?php echo base_url("rekap/cetak");?>" class="btn btn-primary"><i class="fa fa-print"></i> Print</a>
+	</div>
 </div>
 </div>
 <script type="text/javascript">
-		$('#kwaran').change(function () {
-			var kwaran=$(this).val();
-			$.get('<?php echo base_url("gudep/list_gudep");?>/'+kwaran+'',function (data) {
-					$('#gudep').html(data)
-			})
-		})
-
-			$('#satuan_karya').change(function () {
-			var idkeahlian=$(this).val();
-			$.get('<?php echo base_url("anggota/sub_keahlian");?>/'+idkeahlian+'',function (data) {
-				$('#keahlian').html(data);
-			})
-		})
+	$(document).ready(function () {
+		$('#tprint').hide();
+	})
+	$('.search').click(function () {
+		$.post('<?php echo base_url("rekap/rekap_golongan");?>',
+				$('#form_golongan').serialize(),
+				function(data){
+					$('#report').html(data);
+					$('#tprint').show();
+				}
+		);
+	})
 </script>

@@ -7,6 +7,7 @@
 			parent::__construct();
 			$this->load->model('datakwaran');
 			$this->load->model('datakwarcab');
+			$this->load->model('dataanggota');
 		}
 		public function session()
 		{
@@ -89,16 +90,22 @@
 		public function detailKwaran()
 		{
 			$idkwaran=$this->input->post('idkwaran');
-			$rekap=$this->datakwaran->detailKwaran($idkwaran);
+			 // $rekap=$this->datakwaran->detailKwaran($idkwaran);
 			$kwaran=$this->datakwaran->where($idkwaran);
-			foreach($kwaran->result() as $row)
-			{
-				$nama=$row->nama_kwaran;
-				$data['array'] = array('kwaran' => $nama,'detail'=>$rekap->result());
-				$data['konten']=$this->load->view('public/detail_kwaran',$data,TRUE);
+			$data=$this->dataanggota->selectKwaran($idkwaran);
+			
+			  foreach($kwaran->result() as $row)
+			  {
+			  	$nama=$row->nama_kwaran;
+			  	$kwaran= array(
+			  		'kwaran' => $nama,
+			  	);
+			  	$newArray=array_merge($data,$kwaran);
+			  	
 				$this->load->view('modul/css');
-				$this->load->view('welcome_message',$data);
-			}
+			  	$x['konten']=$this->load->view('public/table_anggota',$newArray,true);
+			  	$this->load->view('welcome_message',$x);
+			  }
 			
 
 		}

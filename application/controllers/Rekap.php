@@ -29,6 +29,16 @@
 			$data['keahlian']=$this->datakeahlian->all();
 			$this->load->view('admin/form_rekap',$data);
 		}
+		public function form_rekap_keahlian()
+		{
+			$s=$this->session();
+			$idkwaran=$s['idkwaran'];
+			$data['kwaran']=$this->datakwaran->all($idkwaran);
+			$data['gudep']=$this->datagudep->all($idkwaran);
+			$data['golongan']=$this->dataanggota->golongan();
+			$data['keahlian']=$this->datakeahlian->all();
+			$this->load->view('admin/form_rekap_keahlian',$data);
+		}
 		public function create_rekap()
 		{
 			$data = array(
@@ -48,5 +58,44 @@
 			$body=$this->load->view('admin/rekap',$rekapAnggota,TRUE);
 			echo $head.$body;
 			
+		}
+		public function rekap_golongan()
+		{
+			$s=$this->session();
+			$data = array(
+				'idkwaran' => $s['idkwaran'],
+				'golongan' => $this->input->post('golongan'), 
+				'kwaran' => $this->input->post('kwaran'), 
+				);
+			
+			$data['hasil']=$this->datarekap->rekap_golongan($data);
+			$table=$this->load->view('admin/table_rekap_golongan',$data,TRUE);
+			$this->session->set_userdata('laporan',$table);
+			echo $table;
+
+		}
+		public function rekap_keahlian()
+		{
+			$s=$this->session();
+			$data = array(
+				'idkwaran' => $s['idkwaran'],
+				'keahlian' => $this->input->post('keahlian'), 
+				'sub_keahlian' => $this->input->post('sub_keahlian'), 
+				);
+
+			$data['hasil']=$this->datarekap->rekap_keahlian($data);
+			
+			$table=$this->load->view('admin/table_rekap_golongan',$data,TRUE);
+			$this->session->set_userdata('laporan',$table);
+			echo $table;
+
+		}
+		public function cetak()
+		{
+	       $data=$this->session->userdata('laporan');
+	       
+	       echo $data;
+	       $this->load->view('modul/js');
+	       $this->load->view('admin/print');
 		}
 	}

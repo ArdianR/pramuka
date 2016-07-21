@@ -43,7 +43,7 @@
 		public function detailKwaran($idkwaran)
 		{
 			return $this->db->query("
-				select nama_gudep,gudep_putra, gudep_putri ,count(idanggota) as total,
+				select nama_gudep,gudep_putra, gudep_putri ,count(distinct(idanggota)) as total,
 				golongan in (select golongan from anggota where golongan='PEMBINA') as dewasa,
 				golongan in (select golongan from anggota where golongan <>'PEMBINA') as muda,
 				golongan in (select golongan from anggota where golongan='SIAGA') as siaga,

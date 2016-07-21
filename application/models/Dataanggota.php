@@ -4,10 +4,17 @@
 	*/
 	class Dataanggota extends CI_model
 	{
-		public function all()
+		public function all($idkwaran='')
 		{
-			return $this->db->get('anggota');
+			if (!empty($idkwaran)) {
+				$this->db->where('idkwaran');
+				return $this->db->get('anggota');
+			}else{
+				return $this->db->get('anggota');
+			}
+			
 		}
+		
 		public function golongan()
 		{
 			return $this->db->query('select distinct(golongan) from anggota');
@@ -65,5 +72,18 @@
 		{
 			$this->db->where('idanggota',$data['idanggota']);
 			$this->db->update('anggota',$data);
+		}
+		public function selectKwaran($idkwaran)
+		{
+			return $data = array(
+				'data' =>$this->whereKwaran($idkwaran)->result(),
+				'fields'=>$this->db->list_fields('anggota'),
+				'key'=>'idanggota' 
+				);
+		}
+		public function whereKwaran($idkwaran)
+		{
+			$this->db->where('idkwaran',$idkwaran);
+			return $this->db->get('anggota');
 		}
 	}
