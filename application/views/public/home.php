@@ -1,5 +1,4 @@
 <section id="heading">
-
 		<div class="container-fluid pad-lg">
 			<div class="col-md-7 pad">
 			<div class="jumbotron">

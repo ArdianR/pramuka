@@ -154,10 +154,20 @@
 		public function detailAnggota()
 		{
 			$idanggota=$this->input->post('idanggota');
-			$data['anggota']=$this->dataanggota->detail($idanggota);
-			$data['konten']=$this->load->view('public/detail_anggota',$data,TRUE);
-			$this->load->view('modul/css');
-			$this->load->view('welcome_message',$data);
+			$anggota=$this->dataanggota->detail($idanggota);
+			if (!empty($anggota->result())) 
+			{	$data['anggota']=$this->dataanggota->detail($idanggota);
+				$data['konten']=$this->load->view('public/detail_anggota',$data,TRUE);
+				$this->load->view('modul/css');
+				$this->load->view('welcome_message',$data);
+			}
+				else
+			{
+				$data['anggota']=$this->dataanggota->detailNama($idanggota);
+				$data['konten']=$this->load->view('public/detail_anggota',$data,TRUE);
+				$this->load->view('modul/css');
+				$this->load->view('welcome_message',$data);
+			}
 		}
 		public function sub_keahlian($idkeahlian)
 		{

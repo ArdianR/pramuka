@@ -1,12 +1,23 @@
-
+<style type="text/css">
+  .bg-kartu{
+    background: rgba(1,99,94,1);
+    background: -moz-linear-gradient(top, rgba(1,99,94,1) 0%, rgba(160,166,128,1) 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(1,99,94,1)), color-stop(100%, rgba(160,166,128,1)));
+    background: -webkit-linear-gradient(top, rgba(1,99,94,1) 0%, rgba(160,166,128,1) 100%);
+    background: -o-linear-gradient(top, rgba(1,99,94,1) 0%, rgba(160,166,128,1) 100%);
+    background: -ms-linear-gradient(top, rgba(1,99,94,1) 0%, rgba(160,166,128,1) 100%);
+    background: linear-gradient(to bottom, rgba(1,99,94,1) 0%, rgba(160,166,128,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#01635e', endColorstr='#a0a680', GradientType=0 );
+  }
+</style>
 <div class="container" id="kartu">
 <div class="col-md-3"></div>
 <div class="col-md-6">
   <?php foreach($anggota->result() as $row):?>
-    <table style="background-color:#DE1E0B; padding:10px; color:#fff; border-radius:5px;">
+    <table class="bg-kartu" style="padding:10px; color:#fff; border-radius:5px;">
   <tr>
     <th>
-        <img width="100px;" src="<?php echo base_url("src/img/logo.png"); ?>">
+        <img width="70px;" src="<?php echo base_url("src/img/TUNAS.png"); ?>">
     </th>
     <th colspan="2">
     <h1 align="center">KARTU TANDA ANGGOTA</h1>
@@ -15,8 +26,9 @@
   </tr>
   <hr>
   <tr>
-    <td colspan="3">
-      <hr>    
+    <td colspan="1"></td>
+    <td colspan="2">
+        <img height="10px" width="100%" src="<?php echo base_url("src/img/bendera.png");?>">
     </td>
   </tr>
   <tr>

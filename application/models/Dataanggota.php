@@ -37,6 +37,16 @@
 																on g.idgudep=a.idgudep
 																where a.idanggota='$idanggota'");
 		}
+		public function detailNama($name)		
+		{
+			return $this->db->query("	SELECT *
+																FROM anggota a
+																INNER JOIN kwaran k
+																ON k.idkwaran = a.idkwaran
+																INNER JOIN gudep g
+																on g.idgudep=a.idgudep
+																where a.nama_anggota like '%$name%'");
+		}
 		public function table_anggota($idkwaran)
 		{
 			if ($idkwaran!=0) {
